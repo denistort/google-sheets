@@ -1,4 +1,4 @@
-import { AbstractStatelessComponent } from "../AbstractStatelessComponent/AbstractStatelessComponent";
+import { AbstractStatelessComponent } from '../AbstractStatelessComponent/AbstractStatelessComponent';
 
 export class AbstractComponentWithState extends AbstractStatelessComponent {
 	constructor(...args) {

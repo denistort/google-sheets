@@ -1,16 +1,3 @@
-const arrOfButtons = [
-	'delete',
-	'exit_to_app'
-]
-const headerButton = (name) => {
-	return (
-		`
-		<div class="button" data-type="button-header">
-			<i class="material-icons">${name}</i>
-		</div>
-		`
-	)
-}
 export const generateHeeaderTemplate = (state) => {
 	return(
 		`
@@ -33,5 +20,5 @@ export const generateHeeaderTemplate = (state) => {
 
 		</div>
 		`
-	)
-}
+	);
+};

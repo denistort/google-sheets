@@ -1,20 +1,20 @@
-import { AbstractStatelessComponent } from "../../core/Components";
-import { createTable } from "./table.template";
-import { resizeHandler } from "./onMousedown";
-import { TableSelection } from "./TableSelection";
-import { isCell, nextSelector, shiftPressed } from "./utils";
-import { $ } from "../../core/dom";
-import { selectionCells } from "./selectionCell";
-import * as actions from "../../store/actionCreators";
-import { defaultStyle } from "../../core/constants";
-import { parseCell } from "../../core/parse";
+import { AbstractStatelessComponent } from '../../core/Components';
+import { createTable } from './table.template';
+import { resizeHandler } from './onMousedown';
+import { TableSelection } from './TableSelection';
+import { isCell, nextSelector, shiftPressed } from './utils';
+import { $ } from '../../core/dom';
+import { selectionCells } from './selectionCell';
+import * as actions from '../../store/actionCreators';
+import { defaultStyle } from '../../core/constants';
+import { parseCell } from '../../core/parse';
 
 export class Table extends AbstractStatelessComponent {
-	static className = "excel__table";
+	static className = 'excel__table';
 	constructor($root, options) {
 		super($root, {
-			name: "Table",
-			listeners: ["mousedown", "keydown", "input"],
+			name: 'Table',
+			listeners: ['mousedown', 'keydown', 'input'],
 			...options,
 		});
 	}
@@ -32,15 +32,15 @@ export class Table extends AbstractStatelessComponent {
 		const $cell = this.$root.find('[data-id="0:0"]');
 		this.selection.select($cell);
 		//observer
-		this.$subscribe("formula:input", (text) => {
+		this.$subscribe('formula:input', (text) => {
 			const result = parseCell(...text);
-			this.selection.current.attr("data-value", ...text).text(result);
+			this.selection.current.attr('data-value', ...text).text(result);
 			this.updateTextInStore(String(text));
 		});
-		this.$subscribe("formula:keydown", (_) => {
+		this.$subscribe('formula:keydown', () => {
 			this.selection.current.focus();
 		});
-		this.$subscribe("toolbar:applyStyle", (value) => {
+		this.$subscribe('toolbar:applyStyle', (value) => {
 			this.selection.applyStyles(...value);
 			this.$dispatch(
 				actions.applyStyles({
@@ -62,22 +62,19 @@ export class Table extends AbstractStatelessComponent {
 		if (isCell(event)) {
 			this.updateTextInStore($(event.target).text());
 			//when you change
-			$(event.target).attr("data-value", $(event.target).text());
+			$(event.target).attr('data-value', $(event.target).text());
 		}
 	}
 
 	async resizeTable(event, $root) {
-		try {
-			const data = await resizeHandler(event, $root);
-			this.$dispatch(actions.tableResize(data));
-		} catch (error) {
-			console.warn(error.message);
-		}
+		const data = await resizeHandler(event, $root);
+		this.$dispatch(actions.tableResize(data));
 	}
+	
 	selectCell(event) {
 		const $cell = this.$root.find(`[data-id="${event.target.dataset.id}"]`);
 		this.selection.select($cell);
-		this.$emit("table:select", this.selection.current);
+		this.$emit('table:select', this.selection.current);
 		const defaultStyleKeys = Object.keys(defaultStyle);
 		const obj = $cell.getStyles(defaultStyleKeys);
 		this.$dispatch(actions.changeStyles(obj));
@@ -90,23 +87,33 @@ export class Table extends AbstractStatelessComponent {
 		*/
 		if (isCell(event)) {
 			if (shiftPressed(event)) {
-				selectionCells(event, this.selection.current, this.selection, this.$root);
+				selectionCells(
+					event,
+					this.selection.current,
+					this.selection,
+					this.$root
+				);
 			} else {
 				this.selectCell(event);
 			}
 		}
 	}
 	onKeydown(event) {
-		const keys = ["Enter", "Tab", "ArrowLeft", "ArrowRight", "ArrowDown", "ArrowUp"];
+		const keys = [
+			'Enter',
+			'Tab',
+			'ArrowLeft',
+			'ArrowRight',
+			'ArrowDown',
+			'ArrowUp',
+		];
 		const { key } = event;
 		if (keys.includes(key) && !event.shiftKey) {
 			event.preventDefault();
 			const id = this.selection.current.id(true);
 			const $next = this.$root.find(nextSelector(key, id));
-			console.log($next);
-			console.log(nextSelector(key, id))
 			this.selection.select($next);
-			this.$emit("table:select", $next.text());
+			this.$emit('table:select', $next.text());
 		}
 	}
 

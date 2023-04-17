@@ -1,15 +1,15 @@
-import { generateToolBarTemplate } from "./Toolbar.template";
-import { AbstractComponentWithState } from "../../core/Components";
-import { defaultStyle } from "../../core/constants";
-import { $ } from "../../core/dom";
+import { generateToolBarTemplate } from './Toolbar.template';
+import { AbstractComponentWithState } from '../../core/Components';
+import { defaultStyle } from '../../core/constants';
+import { $ } from '../../core/dom';
 
 export class Toolbar extends AbstractComponentWithState {
-	static className = "excel__toolbar";
+	static className = 'excel__toolbar';
 	constructor($root, options) {
 		super($root, {
-			name: "Toolbar",
-			listeners: ["click"],
-			subOnStore: ["currentStyleCell"],
+			name: 'Toolbar',
+			listeners: ['click'],
+			subOnStore: ['currentStyleCell'],
 			...options,
 		});
 	}
@@ -24,9 +24,9 @@ export class Toolbar extends AbstractComponentWithState {
 
 	onClick(event) {
 		const $target = $(event.target);
-		if ($target.dataset.type === "button") {
+		if ($target.dataset.type === 'button') {
 			const value = JSON.parse($target.dataset.value);
-			this.$emit("toolbar:applyStyle", value);
+			this.$emit('toolbar:applyStyle', value);
 		}
 	}
 

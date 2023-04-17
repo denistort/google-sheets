@@ -11,53 +11,53 @@ export class Dom {
 	}
 	id(parse) {
 		if(parse){
-			const parsed = this.id().split(':')
+			const parsed = this.id().split(':');
 			return {
 				row: Number(parsed[0]),
 				col: Number(parsed[1])
-			}
+			};
 		}
-		return this.$el.dataset.id
+		return this.$el.dataset.id;
 	}
 	html(html){
 		if(typeof html === 'string'){
 			this.$el.innerHTML = html;
-			return this
+			return this;
 		}
 		return this.$el.outerHTMl.trim();
 	}
 
 	clear() {
 		this.html('');
-		return this
+		return this;
 	}
 	on(event, callback){
-		this.$el.addEventListener(event, callback)
+		this.$el.addEventListener(event, callback);
 	}
 	off(event, callback){
-		this.$el.removeEventListener(event, callback)
+		this.$el.removeEventListener(event, callback);
 	}
 	append(node){
 		if (node instanceof Dom ) {
-			node = node.$el
+			node = node.$el;
 		}
 		if(Element.prototype.append){
-			this.$el.append(node)
+			this.$el.append(node);
 		} else {
-			this.$el.appendChild(node)
+			this.$el.appendChild(node);
 		}
 
-		return this
+		return this;
 	}
 	text(text) {
 		if(text){
 			this.$el.textContent = text;
-			return this
+			return this;
 		} 
-		return this.$el.textContent
+		return this.$el.textContent;
 	}
 	closest(selector){
-		return $(this.$el.closest(selector))
+		return $(this.$el.closest(selector));
 	}
 
 	getCoords(){
@@ -65,44 +65,44 @@ export class Dom {
 	}
 
 	find(selector){
-		return $(this.$el.querySelector(selector))
+		return $(this.$el.querySelector(selector));
 	}
 	findAll(selector){
-		return this.$el.querySelectorAll(selector)
+		return this.$el.querySelectorAll(selector);
 	}
 	focus() {
-		this.$el.focus()
+		this.$el.focus();
 		return this;
 	}
 	attr(name, value){
 		if(value){
 			this.$el.setAttribute(name, value);
-			return this
+			return this;
 		}
-		return this.$el.getAttribute(name)
+		return this.$el.getAttribute(name);
 	}
 
 	//Styling adding css classes or deleting
 	addClass(className){
 		this.$el.classList.add(className);
-		return this
-	};
+		return this;
+	}
 	removeClass(className){
 		this.$el.classList.remove(className);
-		return this
-	};
+		return this;
+	}
 	toggleClass(className){
 		this.$el.classList.toggle(className);
-		return this
-	};
+		return this;
+	}
 	isHasClass(className){
 		return this.$el.classList.contains(className);
 	}
 	addClasses(...bunchOfClasses){
 		if(bunchOfClasses.length > 0) {
-			bunchOfClasses.forEach(clasS => this.$el.classList.add(clasS))
+			bunchOfClasses.forEach(clasS => this.$el.classList.add(clasS));
 		}
-		return this
+		return this;
 	}
 
 	css(styles = {}) {
@@ -115,9 +115,9 @@ export class Dom {
 	getStyles(styles = []){
 		// input => ['fontStyle'] output => {'fontStlye': '' or 'fontStlye': 'italic'};
 		return styles.reduce((res, s) => {
-			res[s] = this.$el.style[s]
-			return res 
-		}, {}) 
+			res[s] = this.$el.style[s];
+			return res; 
+		}, {}); 
 	}
 }
 
@@ -129,8 +129,8 @@ $.create = (tagName, ...classes) => {
 	const domElem = document.createElement(tagName);
 	if(classes.length > 0) {
 		classes.forEach(w => {
-			domElem.classList.add(w)
-		})
+			domElem.classList.add(w);
+		});
 	}
 	return $(domElem);
 };

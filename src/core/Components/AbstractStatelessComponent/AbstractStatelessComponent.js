@@ -1,9 +1,9 @@
-import { DOMListener } from "../../DOMListener";
+import { DOMListener } from '../../DOMListener';
 
 export class AbstractStatelessComponent extends DOMListener {
 	constructor($root, options = {}) {
 		super($root, options.listeners);
-		this.name = options.name || "";
+		this.name = options.name || '';
 		this.observer = options.observer;
 		this.store = options.store;
 		this.subOnStore = options.subOnStore || [];
@@ -45,7 +45,7 @@ export class AbstractStatelessComponent extends DOMListener {
 	Render to html
 	*/
 	toHtml() {
-		return "";
+		return '';
 	}
 	/* 
 	Init and adding event listeners 

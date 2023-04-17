@@ -1,13 +1,13 @@
 const generateDocuments = (keys) => {
 	if (keys.length === 0) {
-		return `<p>Записей нет</p>`;
+		return '<p>Записей нет</p>';
 	}
 
 	return keys.map((key) => {
 		const info = JSON.parse(localStorage.getItem(key));
 		return `
 		<li class="db__record">
-			<a href="#excel/${key.split(":")[1]}">${info.tableName}</a>
+			<a href="#excel/${key.split(':')[1]}">${info.tableName}</a>
 			<strong>
 				${new Date(info.lastUpdate).toLocaleDateString()}
 				${new Date(info.lastUpdate).toLocaleTimeString()}
@@ -53,7 +53,7 @@ const getAllkeys = () => {
 	const keys = [];
 	for (let i = 0; i < localStorage.length; i++) {
 		const key = localStorage.key(i);
-		if (!key.includes("excel")) {
+		if (!key.includes('excel')) {
 			continue;
 		}
 		keys.push(key);

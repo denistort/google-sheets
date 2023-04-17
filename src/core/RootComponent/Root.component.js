@@ -1,7 +1,7 @@
-import { $ } from "../dom";
-import { Observer } from "../Observer";
-import { lastUpdateChange } from "../../store/actionCreators";
-import { StoreSubscriber } from "../../store/StoreSubscriber";
+import { $ } from '../dom';
+import { Observer } from '../Observer';
+import { lastUpdateChange } from '../../store/actionCreators';
+import { StoreSubscriber } from '../../store/StoreSubscriber';
 
 export class RootComponent {
 	/**
@@ -21,10 +21,10 @@ export class RootComponent {
 			store: this.store,
 		};
 
-		const $root = $.create("div", "excel");
+		const $root = $.create('div', 'excel');
 
 		this.components = this.components.map((Component) => {
-			const $el = $.create("div", Component.className);
+			const $el = $.create('div', Component.className);
 			const component = new Component($el, componentOptions);
 			$el.html(component.toHtml());
 			$root.append($el);

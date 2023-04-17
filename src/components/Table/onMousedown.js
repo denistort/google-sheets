@@ -1,4 +1,4 @@
-import { $ } from "../../core/dom";
+import { $ } from '../../core/dom';
 
 export const resizeHandler = (event, $root) => {
 	return new Promise((resolve) => {
@@ -11,7 +11,7 @@ export const resizeHandler = (event, $root) => {
 			const type = $resizer.dataset.resize;
 			let value;
 			document.onmousemove = (e) => {
-				if (type === "col") {
+				if (type === 'col') {
 					const delta = e.pageX - coords.right;
 					value = coords.width + delta;
 					$parent.css({ width: `${value}px` });
@@ -33,7 +33,7 @@ export const resizeHandler = (event, $root) => {
 					id: $parent.dataset[type],
 				});
 
-				if (type === "col") allCells.forEach((el) => $(el).css({ width: value + "px" }));
+				if (type === 'col') allCells.forEach((el) => $(el).css({ width: value + 'px' }));
 			};
 		}
 	});

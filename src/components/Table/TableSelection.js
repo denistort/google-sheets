@@ -23,15 +23,15 @@ export class TableSelection {
 		if(cellsGroup.length > 0){
 			this.group = cellsGroup;
 			cellsGroup.forEach(cell => {
-				cell.addClass(this.className)
-			})
+				cell.addClass(this.className);
+			});
 		}
 	}
 
 	applyStyles(style){
-		this.group.forEach($el => $el.css(style))
+		this.group.forEach($el => $el.css(style));
 	}
 	get getAllGroudIds(){
-		return this.group.map($elem => $elem.id())
+		return this.group.map($elem => $elem.id());
 	}
 }

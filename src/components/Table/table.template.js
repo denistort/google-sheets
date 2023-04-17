@@ -58,7 +58,7 @@ const toColumn = (state) => (col, index) => {
 
 const createRow = (index, content, rowState = {}) => {
 	let rowHeight = getSizes(rowState, index, 'height');
-	const resize = index ? `<div class="row-resize" data-resize="row"></div>` : '';
+	const resize = index ? '<div class="row-resize" data-resize="row"></div>' : '';
 	return `
 		<div class="row" data-row="${index}" style="${rowHeight || ''}" data-type="resizable">
 			<div class="row-info">

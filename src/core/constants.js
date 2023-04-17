@@ -3,5 +3,5 @@ export const defaultStyle = {
 	fontWeight: 'normal',
 	textDecoration: 'none',
 	fontStyle: 'normal'
-}
+};
 export const defaultTableName = 'new Table';

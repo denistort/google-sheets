@@ -1,5 +1,5 @@
-import { $ } from "../../core/dom";
-import { range } from "./utils";
+import { $ } from '../../core/dom';
+import { range } from './utils';
 
 export const selectionCells = (event, current, selection, $root) => {
 	const target = $(event.target);

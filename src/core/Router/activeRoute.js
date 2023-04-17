@@ -6,7 +6,7 @@ export class ActiveRoute {
 		return window.location.pathname;
 	}
 	static get param() {
-		return ActiveRoute.path.split('/')[1]
+		return ActiveRoute.path.split('/')[1];
 	}
 	static goTo(to){
 		window.location.href = to;

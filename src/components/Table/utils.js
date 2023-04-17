@@ -2,31 +2,31 @@ export function range(start, end) {
 	if (start > end) {
 		[end, start] = [start, end];
 	}
-	return new Array(end - start + 1).fill(" ").map((_, index) => start + index);
+	return new Array(end - start + 1).fill(' ').map((_, index) => start + index);
 }
 
 export const nextSelector = (key, { col, row }) => {
 	const dataID = { col, row };
 	switch (key) {
-		case "Enter":
-		case "ArrowDown":
+		case 'Enter':
+		case 'ArrowDown':
 			if (dataID.col < 19) {
 				dataID.col++;
 			}
 			break;
-		case "Tab":
+		case 'Tab':
 			break;
-		case "ArrowRight":
+		case 'ArrowRight':
 			if (dataID.row < 25) {
 				dataID.row++;
 			}
 			break;
-		case "ArrowLeft":
+		case 'ArrowLeft':
 			if (dataID.row > 0) {
 				dataID.row--;
 			}
 			break;
-		case "ArrowUp":
+		case 'ArrowUp':
 			if (dataID.col > 0) dataID.col--;
 			break;
 		default:
@@ -36,5 +36,5 @@ export const nextSelector = (key, { col, row }) => {
 	return `[data-id="${dataID.row}:${dataID.col}"]`;
 };
 
-export const isCell = (event) => (event.target.dataset.type === "cell" ? true : false);
+export const isCell = (event) => (event.target.dataset.type === 'cell' ? true : false);
 export const shiftPressed = (event) => (event.shiftKey === true ? true : false);
