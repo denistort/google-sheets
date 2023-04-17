@@ -1,5 +1,5 @@
 export class Test {
-	constructor()                             {}
+	constructor()                                                 {}
 }
 
 const vacr = "@@@@@@@@@@@@@@@@@@"
