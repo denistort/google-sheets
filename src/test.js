@@ -3,3 +3,4 @@ export class Test {
 }
 
 const vacr = "@@@@@@@@@@@@@@@@@@"
+let wwwwww = "qqqqqqqqqqq"
