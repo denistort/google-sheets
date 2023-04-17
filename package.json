@@ -8,8 +8,8 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"lint:eslint": "eslint src/**/*.js --config .eslintrc.cjs",
-		"lint:prettier": "prettier --check 'src/**/*.js'",
-		"lint:prettier-fix": "yarn lint:prettier -- --write .",
+		"lint:prettier": "prettier --check src/**/*.js",
+		"lint:prettier-fix": "yarn lint:prettier --write .",
 		"lint:eslint-fix": "eslint --fix src/**/*.js --config .eslintrc.cjs",
 		"test:editorconfig": "editorconfig-checker --exclude '.git|.husky|node_modules'",
 		"prepare": "husky install"
@@ -19,7 +19,7 @@
 			"applypatch-msg": "echo \"[Husky] applypatch-msg\"",
 			"pre-applypatch": "echo \"[Husky] pre-applypatch\"",
 			"post-applypatch": "echo \"[Husky] post-applypatch\"",
-			"pre-commit": "npx lint-staged . && git add -A ."
+			"pre-commit": "lint-staged . && git add -A ."
 		}
 	},
 	"devDependencies": {
@@ -35,15 +35,17 @@
 		"eslint-plugin-promise": "^6.0.0",
 		"husky": "^8.0.0",
 		"lint-staged": "^13.2.1",
+		"prettier": "^2.8.7",
 		"sass": "^1.62.0",
 		"vite": "^4.2.0",
 		"vite-aliases": "^0.11.0"
 	},
 	"dependencies": {},
 	"lint-staged": {
-		"*.js": [
+		"*.{js, jsx, ts, tsx, md, html}": [
 			"yarn lint:prettier-fix",
-			"yarn lint:eslint-fix"
+			"yarn lint:eslint-fix",
+			"git add"
 		]
 	}
 }
