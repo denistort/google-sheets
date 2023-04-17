@@ -1,10 +1,10 @@
-import { Formula, Header, Table, Toolbar } from '../../components';
-import { createStore } from '../../core/createStore';
-import { debounce, storage } from '../../core/utils';
-import { normalizeInitialState } from '../../store/initialState';
-import { rootReducer } from '../../store/rootReducer';
-import { Page } from '../../core/Page';
-import { RootComponent } from '../../core/RootComponent/Root.component';
+import { Formula, Header, Table, Toolbar } from '@components';
+import { createStore } from '@core/createStore';
+import { debounce, storage } from '@core/utils';
+import { normalizeInitialState } from '@store/initialState';
+import { rootReducer } from '@store/rootReducer';
+import { Page } from '@core/Page';
+import { RootComponent } from '@core/RootComponent/Root.component';
 
 const storageNameGener = (params) => `excel:${params}`;
 
@@ -24,7 +24,6 @@ export class TablePage extends Page {
 		}, 300);
 		store.subscribe(stateListener);
 
-		
 		this.rootComponent = new RootComponent({
 			components: [Header, Toolbar, Formula, Table],
 			store,

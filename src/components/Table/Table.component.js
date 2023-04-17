@@ -1,13 +1,15 @@
-import { AbstractStatelessComponent } from '../../core/Components';
+import { defaultStyle } from '@core/constants';
+import { parseCell } from '@core/parse';
+import { AbstractStatelessComponent } from '@core/Components';
+import { $ } from '@core/utils/dom';
+
+import * as actions from '@store/actionCreators';
+
 import { createTable } from './table.template';
 import { resizeHandler } from './onMousedown';
 import { TableSelection } from './TableSelection';
 import { isCell, nextSelector, shiftPressed } from './utils';
-import { $ } from '../../core/dom';
 import { selectionCells } from './selectionCell';
-import * as actions from '../../store/actionCreators';
-import { defaultStyle } from '../../core/constants';
-import { parseCell } from '../../core/parse';
 
 export class Table extends AbstractStatelessComponent {
 	static className = 'excel__table';
@@ -70,7 +72,7 @@ export class Table extends AbstractStatelessComponent {
 		const data = await resizeHandler(event, $root);
 		this.$dispatch(actions.tableResize(data));
 	}
-	
+
 	selectCell(event) {
 		const $cell = this.$root.find(`[data-id="${event.target.dataset.id}"]`);
 		this.selection.select($cell);

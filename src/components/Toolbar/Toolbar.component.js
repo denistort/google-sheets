@@ -1,7 +1,7 @@
 import { generateToolBarTemplate } from './Toolbar.template';
-import { AbstractComponentWithState } from '../../core/Components';
-import { defaultStyle } from '../../core/constants';
-import { $ } from '../../core/dom';
+import { AbstractComponentWithState } from '@core/Components';
+import { defaultStyle } from '@core/constants';
+import { $ } from '@core/utils/dom';
 
 export class Toolbar extends AbstractComponentWithState {
 	static className = 'excel__toolbar';

@@ -1,5 +1,5 @@
-import { AbstractStatelessComponent } from '../../core/Components';
-import { $ } from '../../core/dom';
+import { AbstractStatelessComponent } from '@core/Components';
+import { $ } from '@core/utils/dom';
 
 export class Formula extends AbstractStatelessComponent {
 	static className = 'excel__formula';

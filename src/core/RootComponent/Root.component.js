@@ -1,12 +1,12 @@
-import { $ } from '../dom';
+import { $ } from '../utils/dom';
 import { Observer } from '../Observer';
 import { lastUpdateChange } from '../../store/actionCreators';
 import { StoreSubscriber } from '../../store/StoreSubscriber';
 
 export class RootComponent {
 	/**
-	 * 
-	 * @param {*} options 
+	 *
+	 * @param {*} options
 	 */
 	constructor(options) {
 		this.components = options.components || [];

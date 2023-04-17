@@ -1,9 +1,9 @@
-import { $ } from '../../core/dom';
-import { AbstractStatelessComponent } from '../../core/Components';
-import { ActiveRoute } from '../../core/Router/activeRoute';
+import { $ } from '@core/utils/dom';
+import { AbstractStatelessComponent } from '@core/Components';
+import { ActiveRoute } from '@core/App/activeRoute';
 import { generateHeeaderTemplate } from './header.template';
 
-import * as actions from '../../store/actionCreators';
+import * as actions from '@store/actionCreators';
 
 export class Header extends AbstractStatelessComponent {
 	static className = 'excel__header';
@@ -22,7 +22,9 @@ export class Header extends AbstractStatelessComponent {
 			ActiveRoute.goTo('/');
 		}
 		if ($(event.target).dataset.type === 'button-header-delete') {
-			const decision = confirm('Are you sure that you want to delete this table');
+			const decision = confirm(
+				'Are you sure that you want to delete this table'
+			);
 			if (decision === true) {
 				localStorage.removeItem('excel:' + ActiveRoute.param);
 				ActiveRoute.goTo('/');

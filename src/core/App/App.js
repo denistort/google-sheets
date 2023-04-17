@@ -1,7 +1,7 @@
-import { $ } from '../dom';
+import { $ } from '../utils/dom';
 import { ActiveRoute } from './activeRoute';
 
-export class Router {
+export class App {
 	constructor(selector, routes) {
 		if (!selector) {
 			throw new Error('Selector is not provided in ROUTER');
@@ -10,6 +10,9 @@ export class Router {
 		this.routes = routes;
 		this.changePageHandler = this.changePageHandler.bind(this);
 		this.currentPage = null;
+	}
+
+	render() {
 		this.init();
 	}
 
@@ -17,6 +20,7 @@ export class Router {
 		window.addEventListener('hashchange', this.changePageHandler);
 		this.changePageHandler();
 	}
+
 	changePageHandler() {
 		if (this.page) {
 			this.page.destroy();

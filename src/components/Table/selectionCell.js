@@ -1,4 +1,4 @@
-import { $ } from '../../core/dom';
+import { $ } from '@core/utils/dom';
 import { range } from './utils';
 
 export const selectionCells = (event, current, selection, $root) => {
