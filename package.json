@@ -12,14 +12,15 @@
 		"lint:prettier-fix": "yarn lint:prettier --write .",
 		"lint:eslint-fix": "eslint --fix src/**/*.js --config .eslintrc.cjs",
 		"test:editorconfig": "editorconfig-checker --exclude '.git|.husky|node_modules'",
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"lint-staged": "lint-staged"
 	},
 	"husky": {
 		"hooks": {
 			"applypatch-msg": "echo \"[Husky] applypatch-msg\"",
 			"pre-applypatch": "echo \"[Husky] pre-applypatch\"",
 			"post-applypatch": "echo \"[Husky] post-applypatch\"",
-			"pre-commit": "npx lint-staged && git add -A ."
+			"pre-commit": "yarn lint-staged"
 		}
 	},
 	"devDependencies": {
@@ -45,7 +46,7 @@
 		"*.{js, jsx, ts, tsx, md, html}": [
 			"yarn lint:prettier-fix",
 			"yarn lint:eslint-fix",
-			"git add"
+			"git add -A ."
 		]
 	}
 }
