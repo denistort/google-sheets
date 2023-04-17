@@ -15,14 +15,6 @@
 		"prepare": "husky install",
 		"lint-staged": "lint-staged"
 	},
-	"husky": {
-		"hooks": {
-			"applypatch-msg": "echo \"[Husky] applypatch-msg\"",
-			"pre-applypatch": "echo \"[Husky] pre-applypatch\"",
-			"post-applypatch": "echo \"[Husky] post-applypatch\"",
-			"pre-commit": "yarn lint-staged"
-		}
-	},
 	"devDependencies": {
 		"editorconfig-checker": "^5.0.1",
 		"eslint": "^8.13.0",
