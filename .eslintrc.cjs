@@ -6,7 +6,8 @@ module.exports = {
 		jest: true,
 		node: true,
 	},
-	extends: 'eslint:recommended',
+	extends: ['eslint:recommended', 'prettier'],
+	plugins: ['prettier'],
 	parserOptions: {
 		ecmaVersion: 'latest',
 		sourceType: 'module',
