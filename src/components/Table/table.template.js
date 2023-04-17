@@ -58,9 +58,13 @@ const toColumn = (state) => (col, index) => {
 
 const createRow = (index, content, rowState = {}) => {
 	let rowHeight = getSizes(rowState, index, 'height');
-	const resize = index ? '<div class="row-resize" data-resize="row"></div>' : '';
+	const resize = index
+		? '<div class="row-resize" data-resize="row"></div>'
+		: '';
 	return `
-		<div class="row" data-row="${index}" style="${rowHeight || ''}" data-type="resizable">
+		<div class="row" data-row="${index}" style="${
+		rowHeight || ''
+	}" data-type="resizable">
 			<div class="row-info">
 			${index ? index : ''}
 			${resize}
@@ -75,12 +79,19 @@ export function createTable(rowsCount = 15, state = {}) {
 	const colsCount = CODES.Z - CODES.A + 1;
 	const rows = [];
 
-	const cols = new Array(colsCount).fill('').map(toChar).map(toColumn(state)).join('');
+	const cols = new Array(colsCount)
+		.fill('')
+		.map(toChar)
+		.map(toColumn(state))
+		.join('');
 
 	rows.push(createRow(null, cols));
 
 	for (let row = 0; row < rowsCount; row++) {
-		const cells = new Array(colsCount).fill('').map(toCell(row, state)).join('');
+		const cells = new Array(colsCount)
+			.fill('')
+			.map(toCell(row, state))
+			.join('');
 
 		rows.push(createRow(row + 1, cells, state.rowState));
 	}

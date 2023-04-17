@@ -1,6 +1,5 @@
 export const generateHeeaderTemplate = (state) => {
-	return(
-		`
+	return `
 		<input 
 			type="text" 
 			class="input" 
@@ -19,6 +18,5 @@ export const generateHeeaderTemplate = (state) => {
 			</div>
 
 		</div>
-		`
-	);
+		`;
 };

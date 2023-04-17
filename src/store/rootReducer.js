@@ -46,7 +46,10 @@ export const rootReducer = (state, action) => {
 			return {
 				...state,
 				[field]: val,
-				currentStyleCell: { ...state.currentStyleCell, ...action.data.value },
+				currentStyleCell: {
+					...state.currentStyleCell,
+					...action.data.value,
+				},
 			};
 
 		case LAST_UPDATE:

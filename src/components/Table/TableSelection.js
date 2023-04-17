@@ -1,37 +1,35 @@
 export class TableSelection {
-	constructor(){
+	constructor() {
 		this.group = [];
 		this.className = 'selected';
 		this.current = null;
 	}
 
-	select($el){
+	select($el) {
 		this.clear();
 		this.current = $el;
 		this.group.push($el);
-		$el
-			.focus()
-			.addClass(this.className);
+		$el.focus().addClass(this.className);
 	}
-	
+
 	clear() {
-		this.group.forEach($c => $c.removeClass(this.className));
+		this.group.forEach(($c) => $c.removeClass(this.className));
 		this.group = [];
 		this.current = null;
 	}
-	selectGroup(cellsGroup = []){
-		if(cellsGroup.length > 0){
+	selectGroup(cellsGroup = []) {
+		if (cellsGroup.length > 0) {
 			this.group = cellsGroup;
-			cellsGroup.forEach(cell => {
+			cellsGroup.forEach((cell) => {
 				cell.addClass(this.className);
 			});
 		}
 	}
 
-	applyStyles(style){
-		this.group.forEach($el => $el.css(style));
+	applyStyles(style) {
+		this.group.forEach(($el) => $el.css(style));
 	}
-	get getAllGroudIds(){
-		return this.group.map($elem => $elem.id());
+	get getAllGroudIds() {
+		return this.group.map(($elem) => $elem.id());
 	}
 }

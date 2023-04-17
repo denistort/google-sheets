@@ -1,6 +1,3 @@
 export class Test {
-	constructor()                                                 {}
+	constructor() {}
 }
-
-const vacr = "@@@@@@@@@@@@@@@@@@"
-let wwwwww = "qqqqqqqqqqq"

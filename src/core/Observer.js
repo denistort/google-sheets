@@ -1,10 +1,10 @@
 export class Observer {
-	constructor () {
+	constructor() {
 		this.listeners = {};
 	}
 	//Notify listeners
 	emit(eventName, ...args) {
-		this.listeners[eventName].forEach(listener => {
+		this.listeners[eventName].forEach((listener) => {
 			listener(...args);
 		});
 	}
@@ -14,7 +14,9 @@ export class Observer {
 		this.listeners[event] = this.listeners[event] || [];
 		this.listeners[event].push(cb);
 		return () => {
-			this.listeners[event] = this.listeners[event].filter(listener => listener !== cb);
+			this.listeners[event] = this.listeners[event].filter(
+				(listener) => listener !== cb
+			);
 		};
 	}
 }

@@ -2,7 +2,9 @@ export function range(start, end) {
 	if (start > end) {
 		[end, start] = [start, end];
 	}
-	return new Array(end - start + 1).fill(' ').map((_, index) => start + index);
+	return new Array(end - start + 1)
+		.fill(' ')
+		.map((_, index) => start + index);
 }
 
 export const nextSelector = (key, { col, row }) => {
@@ -36,5 +38,6 @@ export const nextSelector = (key, { col, row }) => {
 	return `[data-id="${dataID.row}:${dataID.col}"]`;
 };
 
-export const isCell = (event) => (event.target.dataset.type === 'cell' ? true : false);
+export const isCell = (event) =>
+	event.target.dataset.type === 'cell' ? true : false;
 export const shiftPressed = (event) => (event.shiftKey === true ? true : false);
